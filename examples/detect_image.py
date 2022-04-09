@@ -36,10 +36,10 @@ import time
 from PIL import Image
 from PIL import ImageDraw
 
-from pycoral.adapters import common
-from pycoral.adapters import detect
-from pycoral.utils.dataset import read_label_file
-from pycoral.utils.edgetpu import make_interpreter
+from pycoral_lib.pycoral_utils.adapters import common
+from pycoral_lib.pycoral_utils.adapters import detect
+from pycoral_lib.pycoral_utils.utils.dataset import read_label_file
+from pycoral_lib.pycoral_utils.utils.edgetpu import make_interpreter
 
 
 def draw_objects(draw, objs, labels):
@@ -51,7 +51,6 @@ def draw_objects(draw, objs, labels):
     draw.text((bbox.xmin + 10, bbox.ymin + 10),
               '%s\n%.2f' % (labels.get(obj.id, obj.id), obj.score),
               fill='red')
-
 
 def main():
   parser = argparse.ArgumentParser(
@@ -101,8 +100,7 @@ def main():
     image = image.convert('RGB')
     draw_objects(ImageDraw.Draw(image), objs, labels)
     image.save(args.output)
-    image.show()
-
+    # image.show()
 
 if __name__ == '__main__':
   main()
