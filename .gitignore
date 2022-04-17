@@ -10,3 +10,4 @@ __pycache__
 *.deb
 *.buildinfo
 *.changes
+__pycache__
